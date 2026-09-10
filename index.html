@@ -3,87 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Library Management System</title>
 
-    <link rel="stylesheet"
-        href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
-<!-- =========================================
-     LOGIN PAGE
-========================================= -->
-
-<div id="loginPage"
-    class="login-page">
-
-    <div class="login-bg-circle circle-one"></div>
-    <div class="login-bg-circle circle-two"></div>
-
+<!-- LOGIN PAGE -->
+<div id="loginPage">
 
     <div class="login-box">
 
-        <div class="login-icon">
-            📚
-        </div>
-
-        <h1>
-            Library Management
-        </h1>
+        <h1>📚 Library Management</h1>
 
         <p class="login-subtitle">
             Admin Login
         </p>
 
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter Username"
+        >
 
-        <div class="input-group">
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+        >
 
-            <label>
-                Username
-            </label>
-
-            <input
-                type="text"
-                id="username"
-                placeholder="Enter username"
-                autocomplete="username">
-
-        </div>
-
-
-        <div class="input-group">
-
-            <label>
-                Password
-            </label>
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter password"
-                autocomplete="current-password">
-
-        </div>
-
-
-        <button
-            class="login-btn"
-            onclick="login()">
-
-            🔐 Login
-
+        <button onclick="login()">
+            Login
         </button>
 
-
         <p class="demo-text">
-            Demo Login: <strong>Rishabh / 1234</strong>
+            Demo: Rishabh / 1234
         </p>
 
     </div>
@@ -91,569 +48,219 @@
 </div>
 
 
+<!-- MAIN APPLICATION -->
+<div id="app" style="display:none;">
 
-<!-- =========================================
-     MAIN APPLICATION
-========================================= -->
-
-<div id="app"
-    style="display:none;">
-
-
-    <!-- =====================================
-         SIDEBAR
-    ====================================== -->
-
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
-
-        <div class="sidebar-logo">
-
-            <div class="logo-icon">
-                📚
-            </div>
-
-            <div>
-
-                <h2>
-                    Library
-                </h2>
-
-                <span>
-                    Management System
-                </span>
-
-            </div>
-
+        <div class="logo">
+            📚
+            <span>Library</span>
         </div>
-
-
 
         <div class="sidebar-menu">
 
-
-            <button
-                class="active"
-                onclick="showSection('dashboard')">
-
-                <span>🏠</span>
-                Dashboard
-
+            <button onclick="showSection('dashboard')">
+                🏠 Dashboard
             </button>
 
-
-            <button
-                onclick="showSection('books')">
-
-                <span>📚</span>
-                Books
-
+            <button onclick="showSection('books')">
+                📖 Books
             </button>
 
-
-            <button
-                onclick="showSection('students')">
-
-                <span>👨‍🎓</span>
-                Students
-
+            <button onclick="showSection('students')">
+                👨‍🎓 Students
             </button>
 
-
-            <button
-                onclick="showSection('records')">
-
-                <span>📋</span>
-                Issue / Return
-
-            </button>
-
-
-        </div>
-
-
-
-        <div class="sidebar-bottom">
-
-            <div class="admin-mini">
-
-                <div class="admin-avatar">
-                    R
-                </div>
-
-                <div>
-
-                    <strong>
-                        Rishabh
-                    </strong>
-
-                    <small>
-                        Administrator
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <button
-                class="logout-btn"
-                onclick="logout()">
-
-                🚪 Logout
-
+            <button onclick="showSection('records')">
+                📋 Records
             </button>
 
         </div>
 
+        <button class="logout-btn" onclick="logout()">
+            🚪 Logout
+        </button>
 
     </aside>
 
 
-
-    <!-- =====================================
-         MAIN AREA
-    ====================================== -->
-
+    <!-- MAIN AREA -->
     <div class="main-area">
 
-
         <!-- TOP BAR -->
-
         <header class="topbar">
 
             <div>
-
-                <h1>
-                    Library Dashboard
-                </h1>
-
-                <p>
-                    Manage your library easily
-                </p>
-
+                <h2>Library Management System</h2>
+                <p>Manage your library easily</p>
             </div>
 
-
-            <div class="topbar-admin">
-
-                <div class="top-avatar">
-                    R
-                </div>
-
-                <div>
-
-                    <strong>
-                        Rishabh
-                    </strong>
-
-                    <span>
-                        Admin
-                    </span>
-
-                </div>
-
+            <div class="admin-name">
+                👤 Rishabh
             </div>
 
         </header>
 
 
-
-        <!-- =================================
-             MAIN CONTENT
-        ================================== -->
-
         <main>
 
 
-
-            <!-- =================================
-                 DASHBOARD
-            ================================== -->
-
-            <section
-                id="dashboard"
-                class="section">
-
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="section">
 
                 <div class="welcome-box">
 
-                    <div>
+                    <h1>Welcome, Rishabh 👋</h1>
 
-                        <span class="welcome-small">
-                            Welcome back 👋
-                        </span>
+                    <p>
+                        Here's an overview of your library.
+                    </p>
 
-                        <h2>
-                            Library Overview
-                        </h2>
+                </div>
 
-                        <p>
-                            Here's what's happening
-                            in your library today.
-                        </p>
 
+                <!-- STAT CARDS -->
+                <div class="dashboard-cards">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+
+                        <div>
+                            <p>Total Books</p>
+                            <h2 id="totalBooks">0</h2>
+                        </div>
                     </div>
 
 
-                    <div class="welcome-icon">
-                        📖
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+
+                        <div>
+                            <p>Available Books</p>
+                            <h2 id="availableBooks">0</h2>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📕</div>
+
+                        <div>
+                            <p>Issued Books</p>
+                            <h2 id="issuedBooks">0</h2>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👨‍🎓</div>
+
+                        <div>
+                            <p>Total Students</p>
+                            <h2 id="totalStudents">0</h2>
+                        </div>
                     </div>
 
                 </div>
 
 
+                <!-- QUICK ACTIONS -->
+                <div class="dashboard-box">
 
-                <!-- STATISTICS -->
+                    <h2>Quick Actions</h2>
 
-                <div class="stats-grid">
+                    <div class="quick-actions">
 
+                        <button onclick="showSection('books')">
+                            ➕ Add Book
+                        </button>
 
-                    <div class="stat-card books-card">
+                        <button onclick="showSection('students')">
+                            👨‍🎓 Add Student
+                        </button>
 
-                        <div class="stat-icon">
-                            📚
-                        </div>
-
-                        <div>
-
-                            <p>
-                                Total Books
-                            </p>
-
-                            <h2 id="totalBooks">
-                                0
-                            </h2>
-
-                        </div>
+                        <button onclick="showSection('records')">
+                            📖 Issue Book
+                        </button>
 
                     </div>
-
-
-
-                    <div class="stat-card available-card">
-
-                        <div class="stat-icon">
-                            ✅
-                        </div>
-
-                        <div>
-
-                            <p>
-                                Available Books
-                            </p>
-
-                            <h2 id="availableBooks">
-                                0
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="stat-card issued-card">
-
-                        <div class="stat-icon">
-                            📤
-                        </div>
-
-                        <div>
-
-                            <p>
-                                Issued Books
-                            </p>
-
-                            <h2 id="issuedBooks">
-                                0
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="stat-card students-card">
-
-                        <div class="stat-icon">
-                            👨‍🎓
-                        </div>
-
-                        <div>
-
-                            <p>
-                                Total Students
-                            </p>
-
-                            <h2 id="totalStudents">
-                                0
-                            </h2>
-
-                        </div>
-
-                    </div>
-
 
                 </div>
 
 
+                <!-- SYSTEM INFORMATION -->
+                <div class="dashboard-box">
 
-                <!-- =================================
-                     QUICK ACTIONS
-                ================================== -->
+                    <h2>System Information</h2>
 
-                <div class="dashboard-grid">
+                    <div class="info-grid">
 
+                        <div>
+                            <strong>System:</strong>
+                            Library Management System
+                        </div>
 
-                    <div class="dashboard-box">
+                        <div>
+                            <strong>Technology:</strong>
+                            HTML, CSS & JavaScript
+                        </div>
 
-                        <div class="box-heading">
+                        <div>
+                            <strong>Storage:</strong>
+                            Browser LocalStorage
+                        </div>
 
-                            <div>
-
-                                <h2>
-                                    Quick Actions
-                                </h2>
-
-                                <p>
-                                    Frequently used options
-                                </p>
-
-                            </div>
-
-                            <span>
-                                ⚡
+                        <div>
+                            <strong>Status:</strong>
+                            <span class="status-active">
+                                Active
                             </span>
-
-                        </div>
-
-
-                        <div class="quick-actions">
-
-
-                            <button
-                                onclick="showSection('books')">
-
-                                <span>
-                                    📚
-                                </span>
-
-                                <div>
-
-                                    <strong>
-                                        Manage Books
-                                    </strong>
-
-                                    <small>
-                                        Add, edit or delete books
-                                    </small>
-
-                                </div>
-
-                            </button>
-
-
-
-                            <button
-                                onclick="showSection('students')">
-
-                                <span>
-                                    👨‍🎓
-                                </span>
-
-                                <div>
-
-                                    <strong>
-                                        Manage Students
-                                    </strong>
-
-                                    <small>
-                                        Add and manage students
-                                    </small>
-
-                                </div>
-
-                            </button>
-
-
-
-                            <button
-                                onclick="showSection('records')">
-
-                                <span>
-                                    📤
-                                </span>
-
-                                <div>
-
-                                    <strong>
-                                        Issue a Book
-                                    </strong>
-
-                                    <small>
-                                        Create new issue record
-                                    </small>
-
-                                </div>
-
-                            </button>
-
-
                         </div>
 
                     </div>
-
-
-
-                    <!-- SYSTEM INFO -->
-
-                    <div class="dashboard-box">
-
-                        <div class="box-heading">
-
-                            <div>
-
-                                <h2>
-                                    System Information
-                                </h2>
-
-                                <p>
-                                    Current application
-                                </p>
-
-                            </div>
-
-                            <span>
-                                💻
-                            </span>
-
-                        </div>
-
-
-                        <div class="system-info">
-
-
-                            <div class="info-row">
-
-                                <span>
-                                    Application
-                                </span>
-
-                                <strong>
-                                    Library Management
-                                </strong>
-
-                            </div>
-
-
-                            <div class="info-row">
-
-                                <span>
-                                    Storage
-                                </span>
-
-                                <strong>
-                                    LocalStorage
-                                </strong>
-
-                            </div>
-
-
-                            <div class="info-row">
-
-                                <span>
-                                    Frontend
-                                </span>
-
-                                <strong>
-                                    HTML / CSS / JS
-                                </strong>
-
-                            </div>
-
-
-                            <div class="info-row">
-
-                                <span>
-                                    Status
-                                </span>
-
-                                <strong class="system-online">
-                                    ● Online
-                                </strong>
-
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
 
                 </div>
-
 
             </section>
 
 
-
-            <!-- =================================
-                 BOOKS
-            ================================== -->
-
-            <section
-                id="books"
-                class="section"
-                style="display:none;">
-
+            <!-- BOOKS SECTION -->
+            <section id="books" class="section">
 
                 <div class="page-title">
 
-                    <div>
+                    <h1>📚 Book Management</h1>
 
-                        <h2>
-                            📚 Book Management
-                        </h2>
-
-                        <p>
-                            Add and manage library books
-                        </p>
-
-                    </div>
+                    <p>
+                        Add, search, edit and manage books.
+                    </p>
 
                 </div>
 
 
-
                 <!-- ADD BOOK -->
-
                 <div class="content-box">
 
-                    <h3>
-                        ➕ Add New Book
-                    </h3>
+                    <h2>Add New Book</h2>
 
-                    <div class="form-grid">
+                    <div class="form-row">
 
                         <input
                             type="text"
                             id="bookName"
-                            placeholder="Enter Book Name">
-
+                            placeholder="Enter Book Name"
+                        >
 
                         <input
                             type="text"
                             id="authorName"
-                            placeholder="Enter Author Name">
+                            placeholder="Enter Author Name"
+                        >
 
-
-                        <button
-                            onclick="addBook()">
-
+                        <button onclick="addBook()">
                             ➕ Add Book
-
                         </button>
 
                     </div>
@@ -661,72 +268,42 @@
                 </div>
 
 
-
-                <!-- BOOK LIST -->
-
+                <!-- SEARCH BOOK -->
                 <div class="content-box">
 
-                    <div class="list-header">
+                    <h2>Book List</h2>
 
-                        <div>
-
-                            <h3>
-                                📖 Book List
-                            </h3>
-
-                            <p>
-                                Search and manage books
-                            </p>
-
-                        </div>
-
-
-                        <input
-                            type="text"
-                            id="searchBook"
-                            placeholder="🔍 Search book..."
-                            onkeyup="searchBook()">
-
-                    </div>
+                    <input
+                        type="text"
+                        id="searchBook"
+                        placeholder="🔍 Search book by name..."
+                        onkeyup="searchBook()"
+                    >
 
 
                     <!-- EDIT BOX -->
+                    <div id="editBox" class="edit-box" style="display:none;">
 
-                    <div
-                        id="editBox"
-                        class="edit-box"
-                        style="display:none;">
-
-                        <h3>
-                            ✏ Edit Book
-                        </h3>
-
+                        <h3>Edit Book</h3>
 
                         <input
                             type="text"
                             id="editBookName"
-                            placeholder="Book Name">
-
+                            placeholder="New Book Name"
+                        >
 
                         <input
                             type="text"
                             id="editAuthorName"
-                            placeholder="Author Name">
+                            placeholder="New Author Name"
+                        >
 
-
-                        <button
-                            onclick="saveEdit()">
-
-                            Save Changes
-
+                        <button onclick="saveEdit()">
+                            💾 Save Changes
                         </button>
 
-
-                        <button
-                            onclick="cancelEdit()">
-
-                            Cancel
-
+                        <button onclick="cancelEdit()">
+                            ❌ Cancel
                         </button>
 
                     </div>
@@ -736,286 +313,172 @@
 
                 </div>
 
-
             </section>
 
 
-
-            <!-- =================================
-                 STUDENTS
-            ================================== -->
-
-            <section
-                id="students"
-                class="section"
-                style="display:none;">
-
+            <!-- STUDENTS SECTION -->
+            <section id="students" class="section">
 
                 <div class="page-title">
 
-                    <div>
+                    <h1>👨‍🎓 Student Management</h1>
 
-                        <h2>
-                            👨‍🎓 Student Management
-                        </h2>
-
-                        <p>
-                            Manage library members
-                        </p>
-
-                    </div>
+                    <p>
+                        Manage library students and members.
+                    </p>
 
                 </div>
 
 
-
                 <!-- ADD STUDENT -->
-
                 <div class="content-box">
 
-                    <h3>
-                        ➕ Add New Student
-                    </h3>
+                    <h2>Add New Student</h2>
 
-
-                    <div class="form-grid">
-
+                    <div class="form-row">
 
                         <input
                             type="text"
                             id="studentName"
-                            placeholder="Student Name">
-
+                            placeholder="Student Name"
+                        >
 
                         <input
                             type="text"
                             id="studentId"
-                            placeholder="Student ID">
-
+                            placeholder="Student ID"
+                        >
 
                         <input
                             type="text"
                             id="studentCourse"
-                            placeholder="Course">
+                            placeholder="Course"
+                        >
 
-
-                        <button
-                            onclick="addStudent()">
-
+                        <button onclick="addStudent()">
                             ➕ Add Student
-
                         </button>
-
 
                     </div>
 
                 </div>
-
 
 
                 <!-- STUDENT LIST -->
-
                 <div class="content-box">
 
+                    <h2>Student List</h2>
 
-                    <div class="list-header">
-
-                        <div>
-
-                            <h3>
-                                👥 Student List
-                            </h3>
-
-                            <p>
-                                Registered library students
-                            </p>
-
-                        </div>
-
-
-                        <input
-                            type="text"
-                            id="searchStudent"
-                            placeholder="🔍 Search student..."
-                            onkeyup="searchStudent()">
-
-                    </div>
-
+                    <input
+                        type="text"
+                        id="searchStudent"
+                        placeholder="🔍 Search student..."
+                        onkeyup="searchStudent()"
+                    >
 
                     <div id="studentList"></div>
 
-
                 </div>
-
 
             </section>
 
 
-
-            <!-- =================================
-                 RECORDS
-            ================================== -->
-
-            <section
-                id="records"
-                class="section"
-                style="display:none;">
-
+            <!-- RECORDS SECTION -->
+            <section id="records" class="section">
 
                 <div class="page-title">
 
-                    <div>
+                    <h1>📋 Issue & Return Records</h1>
 
-                        <h2>
-                            📋 Issue & Return
-                        </h2>
-
-                        <p>
-                            Manage book transactions
-                        </p>
-
-                    </div>
+                    <p>
+                        Manage book issue and return transactions.
+                    </p>
 
                 </div>
-
 
 
                 <!-- ISSUE BOOK -->
-
                 <div class="content-box">
 
-                    <h3>
-                        📤 Issue a Book
-                    </h3>
+                    <h2>Issue Book</h2>
 
-
-                    <div class="form-grid">
-
+                    <div class="form-row">
 
                         <select id="issueStudent">
-
                             <option value="">
                                 Select Student
                             </option>
-
                         </select>
-
 
 
                         <select id="issueBook">
-
                             <option value="">
-                                Select Available Book
+                                Select Book
                             </option>
-
                         </select>
 
 
-
-                        <div class="date-field">
-
-                            <label>
-                                Issue Date
-                            </label>
-
+                        <label>
+                            Issue Date
                             <input
                                 type="date"
-                                id="issueDate">
+                                id="issueDate"
+                            >
+                        </label>
 
-                        </div>
 
-
-
-                        <div class="date-field">
-
-                            <label>
-                                Due Date
-                            </label>
-
+                        <label>
+                            Due Date
                             <input
                                 type="date"
-                                id="dueDate">
+                                id="dueDate"
+                            >
+                        </label>
 
-                        </div>
 
-
-
-                        <button
-                            onclick="issueSelectedBook()">
-
-                            📤 Issue Book
-
+                        <button onclick="issueSelectedBook()">
+                            📖 Issue Book
                         </button>
-
 
                     </div>
 
                 </div>
-
 
 
                 <!-- RECORD LIST -->
-
                 <div class="content-box">
 
-
-                    <div class="list-header">
-
-                        <div>
-
-                            <h3>
-                                📋 Transaction Records
-                            </h3>
-
-                            <p>
-                                Book issue and return history
-                            </p>
-
-                        </div>
-
-                    </div>
-
+                    <h2>Transaction Records</h2>
 
                     <div id="recordList"></div>
 
-
                 </div>
 
-
             </section>
-
 
 
         </main>
 
 
-
-        <!-- =================================
-             FOOTER
-        ================================== -->
-
+        <!-- FOOTER -->
         <footer>
 
             <p>
                 © 2026 Library Management System
             </p>
 
-            <span>
-                Developed by <strong>Rishabh Porwal</strong>
-            </span>
+            <p>
+                Developed by Rishabh Porwal
+            </p>
 
         </footer>
 
-
     </div>
 
-
 </div>
-
 
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
