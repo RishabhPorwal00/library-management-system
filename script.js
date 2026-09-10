@@ -1116,6 +1116,7 @@ function updateAll() {
     updateDashboard();
 
     updateIssueSelectors();
+    
     displayRecentTransactions();
 
 }
