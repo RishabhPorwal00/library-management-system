@@ -5,7 +5,7 @@ let records = JSON.parse(localStorage.getItem("libraryRecords")) || [];
 let editIndex = -1;
 
 
-/* LOGIN */
+/* ================= LOGIN ================= */
 
 function login() {
   let username = document.getElementById("username").value.trim();
@@ -14,39 +14,34 @@ function login() {
   if (username.toLowerCase() === "rishabh" && password === "1234") {
     document.getElementById("loginPage").style.display = "none";
     document.getElementById("app").style.display = "block";
+
     updateAll();
   } else {
     alert("Invalid username or password!");
   }
 }
 
-
 function logout() {
-
   document.getElementById("app").style.display = "none";
   document.getElementById("loginPage").style.display = "flex";
 
   document.getElementById("username").value = "";
   document.getElementById("password").value = "";
-
 }
 
 
-/* STORAGE */
+/* ================= STORAGE ================= */
 
 function saveAll() {
-
   localStorage.setItem("libraryBooks", JSON.stringify(books));
   localStorage.setItem("libraryStudents", JSON.stringify(students));
   localStorage.setItem("libraryRecords", JSON.stringify(records));
-
 }
 
 
-/* NAVIGATION */
+/* ================= NAVIGATION ================= */
 
 function showSection(sectionName) {
-
   document.querySelectorAll(".section").forEach(function(section) {
     section.style.display = "none";
   });
@@ -67,14 +62,12 @@ function showSection(sectionName) {
   }
 
   updateDashboard();
-
 }
 
 
-/* BOOKS */
+/* ================= BOOKS ================= */
 
 function addBook() {
-
   let name = document.getElementById("bookName").value.trim();
   let author = document.getElementById("authorName").value.trim();
 
@@ -103,7 +96,6 @@ function addBook() {
 
 
 function displayBooks() {
-
   let list = document.getElementById("bookList");
   let search = document.getElementById("searchBook").value.toLowerCase();
 
@@ -144,17 +136,15 @@ function displayBooks() {
 
       </div>
     `;
-
   });
 
   if (!found) {
     list.innerHTML = "<p>No books found.</p>";
   }
-
 }
 
 
-/* QUICK ISSUE */
+/* ================= QUICK ISSUE ================= */
 
 function quickIssue(index) {
 
@@ -167,30 +157,24 @@ function quickIssue(index) {
   showSection("records");
 
   setTimeout(function() {
-
     document.getElementById("issueBook").value = index;
-
   }, 50);
-
 }
 
 
-/* EDIT */
+/* ================= EDIT BOOK ================= */
 
 function editBook(index) {
-
   editIndex = index;
 
   document.getElementById("editBookName").value = books[index].name;
   document.getElementById("editAuthorName").value = books[index].author;
 
   document.getElementById("editModal").style.display = "flex";
-
 }
 
 
 function saveEdit() {
-
   let name = document.getElementById("editBookName").value.trim();
   let author = document.getElementById("editAuthorName").value.trim();
 
@@ -205,22 +189,18 @@ function saveEdit() {
   saveAll();
 
   closeEdit();
-
   displayBooks();
 
   alert("Book updated successfully!");
-
 }
 
 
 function closeEdit() {
-
   document.getElementById("editModal").style.display = "none";
-
 }
 
 
-/* DELETE */
+/* ================= DELETE BOOK ================= */
 
 function deleteBook(index) {
 
@@ -234,11 +214,10 @@ function deleteBook(index) {
 
   displayBooks();
   updateDashboard();
-
 }
 
 
-/* RETURN */
+/* ================= RETURN BOOK ================= */
 
 function returnBook(index) {
 
@@ -260,11 +239,10 @@ function returnBook(index) {
   updateDashboard();
 
   alert("Book returned successfully!");
-
 }
 
 
-/* STUDENTS */
+/* ================= STUDENTS ================= */
 
 function addStudent() {
 
@@ -294,7 +272,6 @@ function addStudent() {
   updateDashboard();
 
   alert("Student added successfully!");
-
 }
 
 
@@ -333,13 +310,11 @@ function displayStudents() {
 
       </div>
     `;
-
   });
 
   if (!found) {
     list.innerHTML = "<p>No students found.</p>";
   }
-
 }
 
 
@@ -355,19 +330,21 @@ function deleteStudent(index) {
 
   displayStudents();
   updateDashboard();
-
 }
 
 
-/* ISSUE */
+/* ================= ISSUE BOOK ================= */
 
 function updateSelectors() {
 
   let studentSelect = document.getElementById("issueStudent");
   let bookSelect = document.getElementById("issueBook");
 
-  studentSelect.innerHTML = '<option value="">Select Student</option>';
-  bookSelect.innerHTML = '<option value="">Select Available Book</option>';
+  studentSelect.innerHTML =
+    '<option value="">Select Student</option>';
+
+  bookSelect.innerHTML =
+    '<option value="">Select Available Book</option>';
 
   students.forEach(function(student) {
 
@@ -376,7 +353,6 @@ function updateSelectors() {
         ${escapeHTML(student.name)} - ${escapeHTML(student.studentId)}
       </option>
     `;
-
   });
 
   books.forEach(function(book, index) {
@@ -388,21 +364,24 @@ function updateSelectors() {
           ${escapeHTML(book.name)}
         </option>
       `;
-
     }
-
   });
-
 }
 
 
 function issueSelectedBook() {
 
-  let studentId = document.getElementById("issueStudent").value;
-  let bookIndex = document.getElementById("issueBook").value;
+  let studentId =
+    document.getElementById("issueStudent").value;
 
-  let issueDate = document.getElementById("issueDate").value;
-  let dueDate = document.getElementById("dueDate").value;
+  let bookIndex =
+    document.getElementById("issueBook").value;
+
+  let issueDate =
+    document.getElementById("issueDate").value;
+
+  let dueDate =
+    document.getElementById("dueDate").value;
 
   if (
     studentId === "" ||
@@ -410,10 +389,8 @@ function issueSelectedBook() {
     issueDate === "" ||
     dueDate === ""
   ) {
-
     alert("Please fill all issue details.");
     return;
-
   }
 
   let book = books[bookIndex];
@@ -453,11 +430,10 @@ function issueSelectedBook() {
   updateDashboard();
 
   alert("Book issued successfully!");
-
 }
 
 
-/* RECORDS */
+/* ================= RECORDS ================= */
 
 function displayRecords() {
 
@@ -466,10 +442,9 @@ function displayRecords() {
   list.innerHTML = "";
 
   if (records.length === 0) {
-
-    list.innerHTML = "<p>No issue/return records available.</p>";
+    list.innerHTML =
+      "<p>No issue/return records available.</p>";
     return;
-
   }
 
   records.slice().reverse().forEach(function(record) {
@@ -514,13 +489,11 @@ function displayRecords() {
 
       </div>
     `;
-
   });
-
 }
 
 
-/* DASHBOARD */
+/* ================= DASHBOARD ================= */
 
 function updateDashboard() {
 
@@ -535,12 +508,12 @@ function updateDashboard() {
   document.getElementById("totalBooks").innerText = total;
   document.getElementById("issuedBooks").innerText = issued;
   document.getElementById("availableBooks").innerText = available;
-  document.getElementById("totalStudents").innerText = students.length;
-
+  document.getElementById("totalStudents").innerText =
+    students.length;
 }
 
 
-/* SECURITY HELPER */
+/* ================= SECURITY ================= */
 
 function escapeHTML(text) {
 
@@ -550,11 +523,10 @@ function escapeHTML(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-
 }
 
 
-/* UPDATE */
+/* ================= UPDATE ALL ================= */
 
 function updateAll() {
 
@@ -567,13 +539,23 @@ function updateAll() {
 }
 
 
-/* DEFAULT DATES */
+/* ================= DEFAULT DATE ================= */
 
-let today = new Date().toISOString().split("T")[0];
+window.addEventListener("DOMContentLoaded", function() {
 
-document.getElementById("issueDate").value = today;
+  let today =
+    new Date().toISOString().split("T")[0];
+
+  let issueDate =
+    document.getElementById("issueDate");
+
+  if (issueDate) {
+    issueDate.value = today;
+  }
+
+});
 
 
-/* START */
+/* ================= START ================= */
 
 updateDashboard();
