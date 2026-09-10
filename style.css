@@ -1313,3 +1313,1318 @@ footer p {
     }
 
 }
+/* =========================================
+   LIBRARY MANAGEMENT SYSTEM
+   PROFESSIONAL DASHBOARD UI
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f1f5f9;
+    color: #172033;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   LOGIN PAGE
+========================================= */
+
+#loginPage {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(59,130,246,.35), transparent 28%),
+        radial-gradient(circle at 90% 80%, rgba(139,92,246,.30), transparent 30%),
+        linear-gradient(135deg, #0f172a, #1e3a8a, #312e81);
+
+    position: relative;
+    overflow: hidden;
+}
+
+#loginPage::before,
+#loginPage::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+
+    animation: floating 7s ease-in-out infinite;
+}
+
+#loginPage::before {
+    width: 280px;
+    height: 280px;
+
+    top: -100px;
+    left: -70px;
+}
+
+#loginPage::after {
+    width: 380px;
+    height: 380px;
+
+    right: -130px;
+    bottom: -170px;
+
+    animation-delay: 2s;
+}
+
+.login-box {
+    width: min(520px, 95vw);
+
+    padding: 48px;
+
+    background: rgba(255,255,255,.13);
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow: 0 30px 80px rgba(0,0,0,.38);
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+
+    animation: loginEnter .8s ease;
+}
+
+.login-icon {
+    font-size: 68px;
+
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    animation: bookFloat 3s ease-in-out infinite;
+}
+
+.login-box h1 {
+    color: white;
+
+    font-size: clamp(28px, 4vw, 40px);
+
+    margin-bottom: 8px;
+}
+
+.login-box > p {
+    color: #dbeafe;
+
+    margin-bottom: 28px;
+}
+
+.login-box input {
+    width: 100%;
+    height: 58px;
+
+    padding: 0 18px;
+
+    margin: 7px 0;
+
+    border: 2px solid transparent;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.97);
+
+    color: #172033;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: .25s ease;
+}
+
+.login-box input:focus {
+    border-color: #60a5fa;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 0 4px rgba(96,165,250,.18);
+}
+
+.login-box button {
+    width: 100%;
+    height: 58px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(135deg, #3b82f6, #6366f1);
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 28px rgba(59,130,246,.35);
+
+    transition: .25s ease;
+}
+
+.login-box button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 38px rgba(59,130,246,.45);
+}
+
+.login-box button:active {
+    transform: scale(.98);
+}
+
+.demo-text {
+    margin-top: 18px !important;
+    margin-bottom: 0 !important;
+
+    color: #bfdbfe !important;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   APPLICATION
+========================================= */
+
+#app {
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 260px;
+
+    padding: 25px 16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0f172a,
+            #172554
+        );
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow:
+        8px 0 30px rgba(15,23,42,.12);
+
+    z-index: 100;
+}
+
+
+/* LOGO */
+
+.sidebar-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 5px 10px 28px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.10);
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(135deg, #3b82f6, #6366f1);
+
+    border-radius: 14px;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 8px 20px rgba(59,130,246,.3);
+}
+
+.sidebar-logo h2 {
+    font-size: 21px;
+}
+
+.sidebar-logo span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* MENU */
+
+.sidebar-menu {
+    padding-top: 28px;
+
+    flex: 1;
+}
+
+.menu-title {
+    padding: 0 12px 12px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.sidebar-menu button,
+.sidebar-logout {
+    width: 100%;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 0 15px;
+
+    margin: 5px 0;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: #cbd5e1;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.sidebar-menu button:hover,
+.sidebar-menu button:focus {
+    background:
+        rgba(59,130,246,.18);
+
+    color: white;
+
+    transform: translateX(4px);
+}
+
+.sidebar-menu button:first-of-type {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(59,130,246,.9),
+            rgba(99,102,241,.9)
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(59,130,246,.2);
+}
+
+.sidebar-menu button span,
+.sidebar-logout span {
+    font-size: 14px;
+}
+
+
+/* SIDEBAR BOTTOM */
+
+.sidebar-bottom {
+    border-top:
+        1px solid rgba(255,255,255,.10);
+
+    padding-top: 18px;
+}
+
+.admin-mini {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 8px 10px 14px;
+}
+
+.admin-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg, #3b82f6, #8b5cf6);
+
+    color: white;
+
+    font-weight: 800;
+}
+
+.admin-mini strong {
+    display: block;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+.admin-mini small {
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+.sidebar-logout {
+    color: #fca5a5;
+
+    margin-top: 5px;
+}
+
+.sidebar-logout:hover {
+    background: rgba(239,68,68,.12);
+
+    color: #fecaca;
+}
+
+
+/* =========================================
+   MAIN AREA
+========================================= */
+
+.main-area {
+    margin-left: 260px;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topbar {
+    min-height: 92px;
+
+    padding: 18px 4%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: white;
+
+    border-bottom:
+        1px solid #e2e8f0;
+
+    box-shadow:
+        0 5px 20px rgba(15,23,42,.05);
+}
+
+.topbar h1 {
+    color: #172554;
+
+    font-size: clamp(22px, 2.5vw, 30px);
+
+    margin-bottom: 4px;
+}
+
+.topbar p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.top-user {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 7px 12px;
+
+    border-radius: 14px;
+
+    background: #f8fafc;
+}
+
+.top-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg, #2563eb, #7c3aed);
+
+    color: white;
+
+    font-weight: 800;
+}
+
+.top-user strong {
+    display: block;
+
+    color: #172033;
+
+    font-size: 13px;
+}
+
+.top-user small {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+main {
+    width: 92%;
+
+    max-width: 1500px;
+
+    margin: 35px auto;
+
+    flex: 1;
+}
+
+.page-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.page-heading h2 {
+    color: #172554;
+
+    font-size: 30px;
+
+    margin-bottom: 5px;
+}
+
+.page-heading p {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+.card {
+    min-height: 165px;
+
+    padding: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background: white;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 28px rgba(15,23,42,.06);
+
+    overflow: hidden;
+
+    position: relative;
+
+    transition: .3s ease;
+}
+
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: rgba(59,130,246,.07);
+
+    right: -45px;
+    top: -45px;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 20px 40px rgba(15,23,42,.12);
+}
+
+.card-icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #e0e7ff
+        );
+
+    font-size: 28px;
+
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.card h3 {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.card p {
+    color: #2563eb;
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome-box {
+    min-height: 190px;
+
+    margin-top: 25px;
+
+    padding: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4f46e5,
+            #7c3aed
+        );
+
+    color: white;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        0 18px 40px rgba(37,99,235,.20);
+}
+
+.welcome-label {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #bfdbfe;
+
+    font-weight: 800;
+}
+
+.welcome-box h2 {
+    color: white;
+
+    font-size: 28px;
+
+    margin: 8px 0;
+}
+
+.welcome-box p {
+    color: #dbeafe;
+
+    font-size: 14px;
+}
+
+.welcome-book {
+    font-size: 105px;
+
+    opacity: .18;
+
+    animation:
+        bookFloat 4s ease-in-out infinite;
+}
+
+
+/* =========================================
+   QUICK ACCESS
+========================================= */
+
+.quick-box {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    background: white;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(15,23,42,.05);
+}
+
+.quick-box h3 {
+    color: #172554;
+
+    margin-bottom: 15px;
+}
+
+.quick-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.quick-buttons button {
+    margin: 0;
+}
+
+
+/* =========================================
+   OTHER SECTIONS
+========================================= */
+
+.add-book,
+.book-section,
+.record-section {
+    margin-top: 20px;
+
+    padding: 28px;
+
+    background: white;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(15,23,42,.05);
+}
+
+.add-book h3,
+.book-section h3,
+.record-section h3 {
+    color: #172554;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input,
+select {
+    width: 100%;
+
+    max-width: 430px;
+
+    height: 52px;
+
+    padding: 0 15px;
+
+    margin: 6px 5px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 11px;
+
+    background: #f8fafc;
+
+    color: #172033;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: .25s ease;
+}
+
+input:focus,
+select:focus {
+    background: white;
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 4px rgba(59,130,246,.10);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+    padding: 12px 19px;
+
+    margin: 6px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(37,99,235,.23);
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+
+/* =========================================
+   LIST ITEMS
+========================================= */
+
+.book,
+.student,
+.record {
+    margin-top: 15px;
+
+    padding: 21px;
+
+    background: #f8fafc;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 15px;
+
+    transition: .25s ease;
+}
+
+.book:hover,
+.student:hover,
+.record:hover {
+    background: white;
+
+    transform: translateX(4px);
+
+    box-shadow:
+        0 8px 22px rgba(15,23,42,.08);
+}
+
+.book h3,
+.student h3 {
+    color: #172554;
+
+    margin-bottom: 7px;
+}
+
+.book p,
+.student p,
+.record p {
+    color: #64748b;
+
+    margin: 5px 0;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.available,
+.issued {
+    display: inline-block;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.available {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+.issued {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+/* =========================================
+   EDIT BOX
+========================================= */
+
+#editBox {
+    padding: 20px;
+
+    margin: 18px 0;
+
+    background: #eff6ff;
+
+    border:
+        1px solid #bfdbfe;
+
+    border-radius: 15px;
+
+    animation: sectionEnter .3s ease;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 25px 15px;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    background: #0f172a;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+footer p {
+    margin: 4px;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes loginEnter {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+@keyframes sectionEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes floating {
+
+    0%, 100% {
+        transform: translate(0,0);
+    }
+
+    50% {
+        transform: translate(25px,-20px);
+    }
+
+}
+
+@keyframes bookFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+}
+
+@keyframes iconFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* =========================================
+   PC / LARGE SCREEN
+========================================= */
+
+@media (min-width: 1200px) {
+
+    .sidebar {
+        width: 275px;
+    }
+
+    .main-area {
+        margin-left: 275px;
+    }
+
+    main {
+        width: 91%;
+    }
+
+    .card {
+        min-height: 180px;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-area {
+        margin-left: 220px;
+    }
+
+    .dashboard {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .topbar {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: auto;
+
+        padding: 15px;
+    }
+
+    .sidebar-logo {
+        padding-bottom: 15px;
+    }
+
+    .sidebar-menu {
+        padding-top: 15px;
+    }
+
+    .menu-title {
+        display: none;
+    }
+
+    .sidebar-menu button {
+        display: inline-flex;
+
+        width: auto;
+
+        padding: 0 15px;
+
+        margin: 4px 2px;
+    }
+
+    .sidebar-bottom {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        margin-top: 10px;
+
+        padding-top: 12px;
+    }
+
+    .admin-mini {
+        padding: 0;
+    }
+
+    .sidebar-logout {
+        width: auto;
+    }
+
+    .main-area {
+        margin-left: 0;
+    }
+
+    .topbar {
+        min-height: 80px;
+
+        padding: 18px 15px;
+    }
+
+    .top-user {
+        display: none;
+    }
+
+    main {
+        width: 94%;
+
+        margin: 25px auto;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .card {
+        min-height: 135px;
+    }
+
+    .welcome-box {
+        padding: 25px;
+
+        min-height: 170px;
+    }
+
+    .welcome-box h2 {
+        font-size: 23px;
+    }
+
+    .welcome-book {
+        font-size: 70px;
+    }
+
+    input,
+    select {
+        width: 100%;
+
+        margin: 5px 0;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 430px) {
+
+    .sidebar-menu button span {
+        display: none;
+    }
+
+    .sidebar-menu button {
+        width: 45px;
+
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    .sidebar-bottom {
+        gap: 5px;
+    }
+
+    .welcome-book {
+        display: none;
+    }
+
+}
