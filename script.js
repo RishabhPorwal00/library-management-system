@@ -560,3 +560,29 @@ window.addEventListener("DOMContentLoaded", function() {
 /* ================= START ================= */
 
 updateDashboard();
+/* ================= ENTER KEY LOGIN ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+
+  if (username && password) {
+
+    username.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        password.focus();
+      }
+    });
+
+    password.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        login();
+      }
+    });
+
+  }
+
+});
