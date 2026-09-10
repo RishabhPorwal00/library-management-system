@@ -1116,6 +1116,7 @@ function updateAll() {
     updateDashboard();
 
     updateIssueSelectors();
+    displayRecentTransactions();
 
 }
 
@@ -1246,3 +1247,63 @@ function escapeHTML(text) {
 /* ================= START ================= */
 
 showSection("dashboard");
+function displayRecentTransactions() {
+
+    let box = document.getElementById("recentTransactions");
+
+    if (!box) return;
+
+    box.innerHTML = "";
+
+    if (records.length === 0) {
+
+        box.innerHTML = `
+            <div class="empty">
+                📋 No recent transactions.
+            </div>
+        `;
+
+        return;
+    }
+
+    let recentRecords = records.slice(-5).reverse();
+
+    recentRecords.forEach(function(record) {
+
+        let student = students[record.studentIndex];
+        let book = books[record.bookIndex];
+
+        let studentName = student
+            ? student.name
+            : "Unknown Student";
+
+        let bookName = book
+            ? book.name
+            : "Unknown Book";
+
+        box.innerHTML += `
+            <div class="record">
+
+                <h3>📖 ${escapeHTML(bookName)}</h3>
+
+                <p>
+                    Student:
+                    ${escapeHTML(studentName)}
+                </p>
+
+                <p>
+                    Issue Date:
+                    ${record.issueDate}
+                </p>
+
+                <p>
+                    Status:
+                    <strong class="record-status">
+                        ${record.status}
+                    </strong>
+                </p>
+
+            </div>
+        `;
+    });
+}
