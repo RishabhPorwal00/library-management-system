@@ -45,35 +45,22 @@ function saveAll() {
 
 function login() {
 
-    let username =
-        document.getElementById("username").value.trim();
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
 
-    let password =
-        document.getElementById("password").value.trim();
+    if (username === "Rishabh" && password === "1234") {
 
-
-    if (
-        username.toLowerCase() === "rishabh" &&
-        password === "1234"
-    ) {
-
-        document.getElementById("loginPage").style.display =
-            "none";
-
-        document.getElementById("app").style.display =
-            "block";
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("app").style.display = "flex";
 
         showSection("dashboard");
 
-        updateAll();
-
     } else {
 
-        alert("Invalid username or password!");
+        alert("Invalid Username or Password");
 
     }
 }
-
 
 // ==========================================
 // LOGOUT
