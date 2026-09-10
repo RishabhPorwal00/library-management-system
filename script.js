@@ -1,7 +1,7 @@
 /* ================= DATA ================= */
 
 let books =
-    JSON.parse(localStorage.getItem("libraryBooks")) || [];
+    JSON.parse(localStorage.getItem("librdeletearyBooks")) || [];
 
 let students =
     JSON.parse(localStorage.getItem("libraryStudents")) || [];
@@ -709,29 +709,24 @@ function displayStudents() {
 
 function deleteStudent(index) {
 
-    if (
-        !confirm(
-            "Are you sure you want to delete this student?"
-        )
-    ) {
+    let studentName = students[index].name;
 
+    let confirmDelete = confirm(
+        "Are you sure you want to delete " + studentName + "?"
+    );
+
+    if (!confirmDelete) {
         return;
-
     }
-
 
     students.splice(index, 1);
 
     saveAll();
 
     displayStudents();
-
     updateDashboard();
-
     updateIssueSelectors();
-
 }
-
 
 /* ================= SEARCH STUDENT ================= */
 
