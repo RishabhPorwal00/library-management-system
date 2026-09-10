@@ -257,10 +257,10 @@ let statusClass = book.issued
                 </p>
 
                 <p>
-                    Status:
-                    <strong>
-                        ${status}
-                    </strong>
+                Status:
+                <span class="status-badge ${statusClass}">
+                ${status}
+                </span>
                 </p>
 
                 ${actionButton}
