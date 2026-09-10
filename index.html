@@ -1,210 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library Management System</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library Management System</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="loginPage" class="login-page">
-  <div class="login-box">
-    <div class="login-icon">📚</div>
-    <h1>Library Management System</h1>
-    <p>Admin Login</p>
+<!-- ================= LOGIN PAGE ================= -->
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+<div id="loginPage">
 
-    <button onclick="login()">Login</button>
+    <div class="login-box">
 
-    <small>Demo: Rishabh / 1234</small>
-  </div>
+        <div class="login-icon">📚</div>
+
+        <h1>Library Management</h1>
+
+        <p>Admin Login Panel</p>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter Username"
+            autocomplete="username"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+            autocomplete="current-password"
+        >
+
+        <button onclick="login()">
+            🔐 Login
+        </button>
+
+        <p class="demo-text">
+            Demo Login: Rishabh / 1234
+        </p>
+
+    </div>
+
 </div>
+
+
+<!-- ================= MAIN APPLICATION ================= -->
 
 <div id="app" style="display:none;">
 
-<header>
-  <div>
-    <h1>📚 Library Management System</h1>
-    <p>Manage Your Library Easily</p>
-  </div>
-  <button class="logout" onclick="logout()">Logout</button>
-</header>
+    <!-- TOP HEADER -->
 
-<nav>
-  <button onclick="showSection('dashboard')">📊 Dashboard</button>
-  <button onclick="showSection('books')">📚 Books</button>
-  <button onclick="showSection('students')">👨‍🎓 Students</button>
-  <button onclick="showSection('records')">📋 Records</button>
-</nav>
+    <header>
 
-<main>
+        <div>
+            <h1>📚 Library Management System</h1>
+            <p>Smart & Simple Library Administration</p>
+        </div>
 
-<section id="dashboard" class="section">
+        <button id="logoutBtn" onclick="logout()">
+            🚪 Logout
+        </button>
 
-  <h2>Dashboard</h2>
-
-  <div class="dashboard">
-    <div class="card">
-      <span>📚</span>
-      <h3>Total Books</h3>
-      <p id="totalBooks">0</p>
-    </div>
-
-    <div class="card">
-      <span>✅</span>
-      <h3>Available Books</h3>
-      <p id="availableBooks">0</p>
-    </div>
-
-    <div class="card">
-      <span>📖</span>
-      <h3>Issued Books</h3>
-      <p id="issuedBooks">0</p>
-    </div>
-
-    <div class="card">
-      <span>👨‍🎓</span>
-      <h3>Total Students</h3>
-      <p id="totalStudents">0</p>
-    </div>
-  </div>
-
-  <div class="welcome-box">
-    <h2>Welcome, Rishabh 👋</h2>
-    <p>Use the navigation menu to manage books, students and issue/return records.</p>
-  </div>
-
-</section>
+    </header>
 
 
-<section id="books" class="section" style="display:none;">
+    <!-- NAVIGATION -->
 
-  <div class="section-title">
-    <h2>📚 Book Management</h2>
-  </div>
+    <nav>
 
-  <div class="form-box">
+        <button onclick="showSection('dashboard')">
+            📊 Dashboard
+        </button>
 
-    <h3>Add New Book</h3>
+        <button onclick="showSection('books')">
+            📚 Books
+        </button>
 
-    <input type="text" id="bookName" placeholder="Book Name">
-    <input type="text" id="authorName" placeholder="Author Name">
+        <button onclick="showSection('students')">
+            👨‍🎓 Students
+        </button>
 
-    <button onclick="addBook()">Add Book</button>
+        <button onclick="showSection('records')">
+            📋 Records
+        </button>
 
-  </div>
-
-  <div class="list-box">
-
-    <h3>Book List</h3>
-
-    <input
-      type="text"
-      id="searchBook"
-      placeholder="🔎 Search book..."
-      onkeyup="displayBooks()"
-    >
-
-    <div id="bookList"></div>
-
-  </div>
-
-</section>
+    </nav>
 
 
-<section id="students" class="section" style="display:none;">
+    <!-- ================= MAIN ================= -->
 
-  <h2>👨‍🎓 Student Management</h2>
-
-  <div class="form-box">
-
-    <h3>Add Student</h3>
-
-    <input type="text" id="studentName" placeholder="Student Name">
-    <input type="text" id="studentId" placeholder="Student ID">
-    <input type="text" id="studentCourse" placeholder="Course">
-
-    <button onclick="addStudent()">Add Student</button>
-
-  </div>
-
-  <div class="list-box">
-
-    <h3>Student List</h3>
-
-    <input
-      type="text"
-      id="searchStudent"
-      placeholder="🔎 Search student..."
-      onkeyup="displayStudents()"
-    >
-
-    <div id="studentList"></div>
-
-  </div>
-
-</section>
+    <main>
 
 
-<section id="records" class="section" style="display:none;">
+        <!-- ================= DASHBOARD ================= -->
 
-  <h2>📋 Issue / Return Records</h2>
+        <section id="dashboard">
 
-  <div class="form-box">
+            <h2>Dashboard</h2>
 
-    <h3>Issue Book</h3>
+            <div class="dashboard">
 
-    <select id="issueStudent"></select>
-    <select id="issueBook"></select>
+                <div class="card">
+                    <h3>📚 Total Books</h3>
+                    <p id="totalBooks">0</p>
+                </div>
 
-    <label>Issue Date</label>
-    <input type="date" id="issueDate">
+                <div class="card">
+                    <h3>✅ Available Books</h3>
+                    <p id="availableBooks">0</p>
+                </div>
 
-    <label>Due Date</label>
-    <input type="date" id="dueDate">
+                <div class="card">
+                    <h3>📖 Issued Books</h3>
+                    <p id="issuedBooks">0</p>
+                </div>
 
-    <button onclick="issueSelectedBook()">Issue Book</button>
+                <div class="card">
+                    <h3>👨‍🎓 Total Students</h3>
+                    <p id="totalStudents">0</p>
+                </div>
 
-  </div>
-
-  <div class="list-box">
-
-    <h3>Transaction Records</h3>
-
-    <div id="recordList"></div>
-
-  </div>
-
-</section>
+            </div>
 
 
-<div id="editModal" class="modal" style="display:none;">
+            <div class="welcome-box">
 
-  <div class="modal-box">
+                <h2>
+                    Welcome, Rishabh 👋
+                </h2>
 
-    <h2>Edit Book</h2>
+                <p>
+                    Manage books, students and issue/return records
+                    from one place.
+                </p>
 
-    <input type="text" id="editBookName">
-    <input type="text" id="editAuthorName">
+            </div>
 
-    <button onclick="saveEdit()">Save Changes</button>
-    <button class="cancel" onclick="closeEdit()">Cancel</button>
+        </section>
 
-  </div>
+
+        <!-- ================= BOOKS ================= -->
+
+        <section id="books" style="display:none;">
+
+            <h2>📚 Book Management</h2>
+
+
+            <div class="add-book">
+
+                <h3>Add New Book</h3>
+
+                <input
+                    type="text"
+                    id="bookName"
+                    placeholder="Enter Book Name"
+                >
+
+                <input
+                    type="text"
+                    id="authorName"
+                    placeholder="Enter Author Name"
+                >
+
+                <button onclick="addBook()">
+                    ➕ Add Book
+                </button>
+
+            </div>
+
+
+            <div class="book-section">
+
+                <h3>Book List</h3>
+
+                <input
+                    type="text"
+                    id="searchBook"
+                    placeholder="🔍 Search book by name..."
+                    onkeyup="searchBook()"
+                >
+
+
+                <!-- EDIT BOX -->
+
+                <div id="editBox" style="display:none;">
+
+                    <h3>✏️ Edit Book</h3>
+
+                    <input
+                        type="text"
+                        id="editBookName"
+                        placeholder="New Book Name"
+                    >
+
+                    <input
+                        type="text"
+                        id="editAuthorName"
+                        placeholder="New Author Name"
+                    >
+
+                    <button onclick="saveEdit()">
+                        💾 Save Changes
+                    </button>
+
+                    <button onclick="cancelEdit()">
+                        ❌ Cancel
+                    </button>
+
+                </div>
+
+
+                <div id="bookList"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STUDENTS ================= -->
+
+        <section id="students" style="display:none;">
+
+            <h2>👨‍🎓 Student Management</h2>
+
+
+            <div class="add-book">
+
+                <h3>Add New Student</h3>
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter Student Name"
+                >
+
+                <input
+                    type="text"
+                    id="studentId"
+                    placeholder="Enter Student ID"
+                >
+
+                <input
+                    type="text"
+                    id="studentCourse"
+                    placeholder="Enter Course"
+                >
+
+                <button onclick="addStudent()">
+                    ➕ Add Student
+                </button>
+
+            </div>
+
+
+            <div class="book-section">
+
+                <h3>Student List</h3>
+
+                <input
+                    type="text"
+                    id="searchStudent"
+                    placeholder="🔍 Search student..."
+                    onkeyup="searchStudent()"
+                >
+
+                <div id="studentList"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECORDS ================= -->
+
+        <section id="records" style="display:none;">
+
+            <h2>📋 Issue & Return Records</h2>
+
+
+            <div class="record-section">
+
+                <h3>📖 Issue Book</h3>
+
+
+                <select id="issueStudent">
+                    <option value="">
+                        Select Student
+                    </option>
+                </select>
+
+
+                <select id="issueBook">
+                    <option value="">
+                        Select Book
+                    </option>
+                </select>
+
+
+                <label>
+                    Issue Date
+                </label>
+
+                <input
+                    type="date"
+                    id="issueDate"
+                >
+
+
+                <label>
+                    Due Date
+                </label>
+
+                <input
+                    type="date"
+                    id="dueDate"
+                >
+
+
+                <button onclick="issueSelectedBook()">
+                    📖 Issue Book
+                </button>
+
+            </div>
+
+
+            <div class="book-section">
+
+                <h3>📋 Transaction Records</h3>
+
+                <div id="recordList"></div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            Library Management System
+        </p>
+
+        <p>
+            Developed by <strong>Rishabh Porwal</strong>
+        </p>
+
+    </footer>
 
 </div>
 
-</main>
-
-<footer>
-  <p>Library Management System | Developed by Rishabh Porwal</p>
-</footer>
-
-</div>
 
 <script src="script.js"></script>
 
