@@ -12,7 +12,7 @@ function login() {
   let username = document.getElementById("username").value.trim();
   let password = document.getElementById("password").value.trim();
 
-  if (username === "admin" && password === "1234") {
+  if (username === "Rishabh " && password === "1234") {
 
     document.getElementById("loginPage").style.display = "none";
     document.getElementById("app").style.display = "block";
