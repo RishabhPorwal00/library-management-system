@@ -581,3 +581,12 @@ footer {
     }
 
 }
+
+/* APP HIDDEN UNTIL LOGIN */
+#app {
+    display: none;
+}
+
+#loginPage {
+    min-height: 100vh;
+}
