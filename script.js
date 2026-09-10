@@ -1,13 +1,8 @@
-/* =========================================
-   LIBRARY MANAGEMENT SYSTEM
-   MAIN JAVASCRIPT
-========================================= */
+// ===============================
+// LIBRARY MANAGEMENT SYSTEM
+// ===============================
 
-
-/* =========================================
-   DATA
-========================================= */
-
+// ---------- DATA ----------
 let books = JSON.parse(localStorage.getItem("libraryBooks")) || [];
 let students = JSON.parse(localStorage.getItem("libraryStudents")) || [];
 let records = JSON.parse(localStorage.getItem("libraryRecords")) || [];
@@ -15,104 +10,64 @@ let records = JSON.parse(localStorage.getItem("libraryRecords")) || [];
 let editIndex = -1;
 
 
-/* =========================================
-   LOGIN
-========================================= */
+// ===============================
+// LOGIN
+// ===============================
 
 function login() {
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
 
-    const username =
-        document.getElementById("username").value.trim();
-
-    const password =
-        document.getElementById("password").value.trim();
-
-
-    if (
-        username.toLowerCase() === "rishabh" &&
-        password === "1234"
-    ) {
+    if (username.toLowerCase() === "rishabh" && password === "1234") {
 
         document.getElementById("loginPage").style.display = "none";
-
         document.getElementById("app").style.display = "block";
 
         updateAll();
 
-        showSection("dashboard");
-
     } else {
-
         alert("Invalid username or password!");
-
     }
-
 }
 
 
 function logout() {
-
     document.getElementById("app").style.display = "none";
-
     document.getElementById("loginPage").style.display = "flex";
 
     document.getElementById("username").value = "";
-
     document.getElementById("password").value = "";
-
-    document.getElementById("username").focus();
-
 }
 
 
-/* =========================================
-   ENTER KEY LOGIN
-========================================= */
+// ---------- ENTER KEY LOGIN ----------
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const username =
-        document.getElementById("username");
-
-    const password =
-        document.getElementById("password");
-
+    let username = document.getElementById("username");
+    let password = document.getElementById("password");
 
     if (username && password) {
 
         username.addEventListener("keydown", function (event) {
-
             if (event.key === "Enter") {
-
-                event.preventDefault();
-
                 password.focus();
-
             }
-
         });
-
 
         password.addEventListener("keydown", function (event) {
-
             if (event.key === "Enter") {
-
-                event.preventDefault();
-
                 login();
-
             }
-
         });
-
     }
 
 });
 
 
-/* =========================================
-   SAVE ALL DATA
-========================================= */
+// ===============================
+// SAVE DATA
+// ===============================
 
 function saveAll() {
 
@@ -130,103 +85,44 @@ function saveAll() {
         "libraryRecords",
         JSON.stringify(records)
     );
-
 }
 
 
-/* =========================================
-   SIDEBAR NAVIGATION
-========================================= */
+// ===============================
+// NAVIGATION
+// ===============================
 
 function showSection(sectionName) {
 
-    const sections = [
-        "dashboard",
-        "books",
-        "students",
-        "records"
-    ];
-
-
-    /* Hide all sections */
+    let sections = document.querySelectorAll(".section");
 
     sections.forEach(function (section) {
-
-        const element =
-            document.getElementById(section);
-
-        if (element) {
-
-            element.style.display =
-                section === sectionName
-                    ? "block"
-                    : "none";
-
-        }
-
+        section.style.display = "none";
     });
 
 
-    /* Remove active from all buttons */
+    let selected = document.getElementById(sectionName);
 
-    const menuButtons =
-        document.querySelectorAll(
-            ".sidebar-menu button"
-        );
+    if (selected) {
+        selected.style.display = "block";
+    }
 
 
-    menuButtons.forEach(function (button) {
+    // Sidebar active button
 
+    let buttons = document.querySelectorAll(".sidebar-menu button");
+
+    buttons.forEach(function (button) {
         button.classList.remove("active");
-
     });
 
 
-    /* Add active to selected button */
+    buttons.forEach(function (button) {
 
-    menuButtons.forEach(function (button) {
+        let text = button.innerText.toLowerCase();
 
-        const text =
-            button.innerText.toLowerCase();
-
-
-        if (
-            sectionName === "dashboard" &&
-            text.includes("dashboard")
-        ) {
-
+        if (text.includes(sectionName.toLowerCase())) {
             button.classList.add("active");
-
-        }
-
-
-        if (
-            sectionName === "books" &&
-            text.includes("books")
-        ) {
-
-            button.classList.add("active");
-
-        }
-
-
-        if (
-            sectionName === "students" &&
-            text.includes("students")
-        ) {
-
-            button.classList.add("active");
-
-        }
-
-
-        if (
-            sectionName === "records" &&
-            text.includes("issue records")
-        ) {
-
-            button.classList.add("active");
-
         }
 
     });
@@ -236,39 +132,27 @@ function showSection(sectionName) {
         top: 0,
         behavior: "smooth"
     });
-
 }
 
 
-/* =========================================
-   BOOK MANAGEMENT
-========================================= */
+// ===============================
+// BOOK MANAGEMENT
+// ===============================
 
 function addBook() {
 
-    const bookName =
-        document.getElementById("bookName")
-        .value
-        .trim();
+    let bookName =
+        document.getElementById("bookName").value.trim();
+
+    let authorName =
+        document.getElementById("authorName").value.trim();
 
 
-    const authorName =
-        document.getElementById("authorName")
-        .value
-        .trim();
+    if (bookName === "" || authorName === "") {
 
-
-    if (
-        bookName === "" ||
-        authorName === ""
-    ) {
-
-        alert(
-            "Please enter book name and author name."
-        );
+        alert("Please enter book name and author name.");
 
         return;
-
     }
 
 
@@ -293,25 +177,20 @@ function addBook() {
 
     displayBooks();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
-
-    alert("Book added successfully!");
-
+    updateIssueSelectors();
 }
 
 
-/* =========================================
-   DISPLAY BOOKS
-========================================= */
+// ===============================
+// DISPLAY BOOKS
+// ===============================
 
 function displayBooks(list = books) {
 
-    const bookList =
+    let bookList =
         document.getElementById("bookList");
-
 
     if (!bookList) return;
 
@@ -321,211 +200,146 @@ function displayBooks(list = books) {
 
     if (list.length === 0) {
 
-        bookList.innerHTML = `
-
-            <div class="book">
-
-                <h3>📚 No Books Found</h3>
-
-                <p>
-                    Add a book to get started.
-                </p>
-
-            </div>
-
-        `;
+        bookList.innerHTML =
+            `<div class="empty">
+                No books found.
+            </div>`;
 
         return;
-
     }
 
 
     list.forEach(function (book) {
 
-        const index =
-            books.indexOf(book);
+        let index = books.indexOf(book);
 
 
-        const status =
+        let status =
             book.issued
                 ? "Issued"
                 : "Available";
 
 
-        const actionButton =
+        let actionButton =
             book.issued
 
-                ? `
-                    <button
-                        onclick="returnBook(${index})"
-                    >
-                        ↩️ Return Book
-                    </button>
-                  `
+                ? `<button onclick="returnBook(${index})">
+                    ↩ Return
+                   </button>`
 
-                : `
-                    <button
-                        onclick="issueBook(${index})"
-                    >
-                        📖 Quick Issue
-                    </button>
-                  `;
+                : `<button onclick="quickIssue(${index})">
+                    📤 Issue
+                   </button>`;
 
 
         bookList.innerHTML += `
 
             <div class="book">
 
-                <h3>
-                    📚 ${escapeHTML(book.name)}
-                </h3>
+                <h3>📚 ${escapeHTML(book.name)}</h3>
 
                 <p>
-                    <strong>Author:</strong>
-                    ${escapeHTML(book.author)}
+                    Author:
+                    <strong>
+                        ${escapeHTML(book.author)}
+                    </strong>
                 </p>
 
                 <p>
-                    <strong>Status:</strong>
-
-                    <span class="${
-                        book.issued
-                            ? "issued"
-                            : "available"
-                    }">
-
+                    Status:
+                    <strong class="${book.issued ? "issued" : "available"}">
                         ${status}
-
-                    </span>
-
+                    </strong>
                 </p>
 
                 ${actionButton}
 
-                <button
-                    onclick="editBook(${index})"
-                >
-                    ✏️ Edit
+                <button onclick="editBook(${index})">
+                    ✏ Edit
                 </button>
 
-                <button
-                    onclick="deleteBook(${index})"
-                >
-                    🗑️ Delete
+                <button onclick="deleteBook(${index})">
+                    🗑 Delete
                 </button>
 
             </div>
 
         `;
-
     });
-
 }
 
 
-/* =========================================
-   SEARCH BOOK
-========================================= */
+// ===============================
+// SEARCH BOOK
+// ===============================
 
 function searchBook() {
 
-    const input =
-        document.getElementById("searchBook");
+    let text =
+        document.getElementById("searchBook")
+        .value
+        .toLowerCase();
 
 
-    if (!input) return;
-
-
-    const searchText =
-        input.value
-        .toLowerCase()
-        .trim();
-
-
-    const filteredBooks =
+    let filtered =
         books.filter(function (book) {
 
             return (
-
-                book.name
-                    .toLowerCase()
-                    .includes(searchText)
-
-                ||
-
-                book.author
-                    .toLowerCase()
-                    .includes(searchText)
-
+                book.name.toLowerCase().includes(text) ||
+                book.author.toLowerCase().includes(text)
             );
 
         });
 
 
-    displayBooks(filteredBooks);
-
+    displayBooks(filtered);
 }
 
 
-/* =========================================
-   EDIT BOOK
-========================================= */
+// ===============================
+// EDIT BOOK
+// ===============================
 
 function editBook(index) {
 
     editIndex = index;
 
 
-    document.getElementById(
-        "editBookName"
-    ).value = books[index].name;
+    document.getElementById("editBookName").value =
+        books[index].name;
 
 
-    document.getElementById(
-        "editAuthorName"
-    ).value = books[index].author;
+    document.getElementById("editAuthorName").value =
+        books[index].author;
 
 
-    document.getElementById(
-        "editBox"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "editBookName"
-    ).focus();
-
+    document.getElementById("editBox").style.display =
+        "block";
 }
 
 
 function saveEdit() {
 
-    if (editIndex < 0) return;
+    if (editIndex === -1) return;
 
 
-    const newName =
-        document.getElementById(
-            "editBookName"
-        ).value.trim();
+    let newName =
+        document.getElementById("editBookName")
+        .value
+        .trim();
 
 
-    const newAuthor =
-        document.getElementById(
-            "editAuthorName"
-        ).value.trim();
+    let newAuthor =
+        document.getElementById("editAuthorName")
+        .value
+        .trim();
 
 
-    if (
-        newName === "" ||
-        newAuthor === ""
-    ) {
+    if (newName === "" || newAuthor === "") {
 
-        alert(
-            "Please enter book name and author name."
-        );
+        alert("Please enter book details.");
 
         return;
-
     }
 
 
@@ -537,9 +351,8 @@ function saveEdit() {
     saveAll();
 
 
-    document.getElementById(
-        "editBox"
-    ).style.display = "none";
+    document.getElementById("editBox").style.display =
+        "none";
 
 
     editIndex = -1;
@@ -549,72 +362,66 @@ function saveEdit() {
 
     updateIssueSelectors();
 
-    updateDashboard();
-
-
-    alert("Book updated successfully!");
-
+    updateAll();
 }
 
 
 function cancelEdit() {
 
-    document.getElementById(
-        "editBox"
-    ).style.display = "none";
-
+    document.getElementById("editBox").style.display =
+        "none";
 
     editIndex = -1;
-
 }
 
 
-/* =========================================
-   DELETE BOOK
-========================================= */
+// ===============================
+// DELETE BOOK
+// ===============================
 
 function deleteBook(index) {
 
-    if (
-        !confirm(
-            "Are you sure you want to delete this book?"
-        )
-    ) {
+    if (!confirm("Delete this book?")) {
+        return;
+    }
+
+
+    // Don't delete issued book
+
+    if (books[index].issued) {
+
+        alert(
+            "This book is currently issued. Return it first."
+        );
 
         return;
-
     }
 
 
     books.splice(index, 1);
-
 
     saveAll();
 
 
     displayBooks();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
+    updateIssueSelectors();
 }
 
 
-/* =========================================
-   QUICK ISSUE
-========================================= */
+// ===============================
+// QUICK ISSUE
+// ===============================
 
-function issueBook(index) {
+function quickIssue(index) {
 
     if (books[index].issued) {
 
-        alert(
-            "This book is already issued."
-        );
+        alert("This book is already issued.");
 
         return;
-
     }
 
 
@@ -626,20 +433,47 @@ function issueBook(index) {
 
     displayBooks();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
+    updateIssueSelectors();
+
+
+    alert(
+        "Book marked as Issued.\nFor complete record, use Records → Issue Book."
+    );
 }
 
 
-/* =========================================
-   QUICK RETURN
-========================================= */
+// ===============================
+// RETURN BOOK
+// ===============================
 
 function returnBook(index) {
 
     books[index].issued = false;
+
+
+    // Find active record for this book
+
+    let activeRecord =
+        records.find(function (record) {
+
+            return (
+                record.bookIndex === index &&
+                record.status === "Issued"
+            );
+
+        });
+
+
+    if (activeRecord) {
+
+        activeRecord.status = "Returned";
+
+        activeRecord.returnDate =
+            getTodayDate();
+
+    }
 
 
     saveAll();
@@ -647,49 +481,43 @@ function returnBook(index) {
 
     displayBooks();
 
-    updateIssueSelectors();
+    displayRecords();
 
     updateDashboard();
 
+    updateIssueSelectors();
 }
 
 
-/* =========================================
-   STUDENT MANAGEMENT
-========================================= */
+// ===============================
+// STUDENT MANAGEMENT
+// ===============================
 
 function addStudent() {
 
-    const name =
-        document.getElementById(
-            "studentName"
-        ).value.trim();
+    let name =
+        document.getElementById("studentName")
+        .value
+        .trim();
 
 
-    const id =
-        document.getElementById(
-            "studentId"
-        ).value.trim();
+    let id =
+        document.getElementById("studentId")
+        .value
+        .trim();
 
 
-    const course =
-        document.getElementById(
-            "studentCourse"
-        ).value.trim();
+    let course =
+        document.getElementById("studentCourse")
+        .value
+        .trim();
 
 
-    if (
-        name === "" ||
-        id === "" ||
-        course === ""
-    ) {
+    if (name === "" || id === "" || course === "") {
 
-        alert(
-            "Please fill all student details."
-        );
+        alert("Please enter all student details.");
 
         return;
-
     }
 
 
@@ -707,46 +535,29 @@ function addStudent() {
     saveAll();
 
 
-    document.getElementById(
-        "studentName"
-    ).value = "";
+    document.getElementById("studentName").value = "";
 
+    document.getElementById("studentId").value = "";
 
-    document.getElementById(
-        "studentId"
-    ).value = "";
-
-
-    document.getElementById(
-        "studentCourse"
-    ).value = "";
+    document.getElementById("studentCourse").value = "";
 
 
     displayStudents();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
-
-    alert(
-        "Student added successfully!"
-    );
-
+    updateIssueSelectors();
 }
 
 
-/* =========================================
-   DISPLAY STUDENTS
-========================================= */
+// ===============================
+// DISPLAY STUDENTS
+// ===============================
 
 function displayStudents(list = students) {
 
-    const studentList =
-        document.getElementById(
-            "studentList"
-        );
-
+    let studentList =
+        document.getElementById("studentList");
 
     if (!studentList) return;
 
@@ -756,197 +567,133 @@ function displayStudents(list = students) {
 
     if (list.length === 0) {
 
-        studentList.innerHTML = `
-
-            <div class="student">
-
-                <h3>👨‍🎓 No Students Found</h3>
-
-                <p>
-                    Add a student to get started.
-                </p>
-
-            </div>
-
-        `;
+        studentList.innerHTML =
+            `<div class="empty">
+                No students found.
+            </div>`;
 
         return;
-
     }
 
 
     list.forEach(function (student) {
 
-        const index =
-            students.indexOf(student);
+        let index = students.indexOf(student);
 
 
         studentList.innerHTML += `
 
             <div class="student">
 
-                <h3>
-                    👨‍🎓 ${escapeHTML(student.name)}
-                </h3>
+                <h3>👨‍🎓 ${escapeHTML(student.name)}</h3>
 
                 <p>
-                    <strong>Student ID:</strong>
-                    ${escapeHTML(student.id)}
+                    Student ID:
+                    <strong>
+                        ${escapeHTML(student.id)}
+                    </strong>
                 </p>
 
                 <p>
-                    <strong>Course:</strong>
-                    ${escapeHTML(student.course)}
+                    Course:
+                    <strong>
+                        ${escapeHTML(student.course)}
+                    </strong>
                 </p>
 
-                <button
-                    onclick="deleteStudent(${index})"
-                >
-                    🗑️ Delete
+                <button onclick="deleteStudent(${index})">
+                    🗑 Delete
                 </button>
 
             </div>
 
         `;
-
     });
-
 }
 
 
-/* =========================================
-   SEARCH STUDENT
-========================================= */
+// ===============================
+// SEARCH STUDENT
+// ===============================
 
 function searchStudent() {
 
-    const input =
-        document.getElementById(
-            "searchStudent"
-        );
+    let text =
+        document.getElementById("searchStudent")
+        .value
+        .toLowerCase();
 
 
-    if (!input) return;
-
-
-    const searchText =
-        input.value
-        .toLowerCase()
-        .trim();
-
-
-    const filteredStudents =
+    let filtered =
         students.filter(function (student) {
 
             return (
-
-                student.name
-                    .toLowerCase()
-                    .includes(searchText)
-
-                ||
-
-                student.id
-                    .toLowerCase()
-                    .includes(searchText)
-
-                ||
-
-                student.course
-                    .toLowerCase()
-                    .includes(searchText)
-
+                student.name.toLowerCase().includes(text) ||
+                student.id.toLowerCase().includes(text) ||
+                student.course.toLowerCase().includes(text)
             );
 
         });
 
 
-    displayStudents(filteredStudents);
-
+    displayStudents(filtered);
 }
 
 
-/* =========================================
-   DELETE STUDENT
-========================================= */
+// ===============================
+// DELETE STUDENT
+// ===============================
 
 function deleteStudent(index) {
 
-    if (
-        !confirm(
-            "Are you sure you want to delete this student?"
-        )
-    ) {
-
+    if (!confirm("Delete this student?")) {
         return;
-
     }
 
 
     students.splice(index, 1);
-
 
     saveAll();
 
 
     displayStudents();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
+    updateIssueSelectors();
 }
 
 
-/* =========================================
-   ISSUE SELECTORS
-========================================= */
+// ===============================
+// ISSUE SELECTORS
+// ===============================
 
 function updateIssueSelectors() {
 
-    const studentSelect =
-        document.getElementById(
-            "issueStudent"
-        );
+    let studentSelect =
+        document.getElementById("issueStudent");
 
 
-    const bookSelect =
-        document.getElementById(
-            "issueBook"
-        );
+    let bookSelect =
+        document.getElementById("issueBook");
 
 
-    if (
-        !studentSelect ||
-        !bookSelect
-    ) {
-
+    if (!studentSelect || !bookSelect) {
         return;
-
     }
 
 
     studentSelect.innerHTML =
-        `
-        <option value="">
-            Select Student
-        </option>
-        `;
+        `<option value="">Select Student</option>`;
 
 
-    students.forEach(function (
-        student,
-        index
-    ) {
+    students.forEach(function (student, index) {
 
         studentSelect.innerHTML += `
 
             <option value="${index}">
-
                 ${escapeHTML(student.name)}
-                -
-                ${escapeHTML(student.id)}
-
+                (${escapeHTML(student.id)})
             </option>
 
         `;
@@ -955,28 +702,17 @@ function updateIssueSelectors() {
 
 
     bookSelect.innerHTML =
-        `
-        <option value="">
-            Select Available Book
-        </option>
-        `;
+        `<option value="">Select Available Book</option>`;
 
 
-    books.forEach(function (
-        book,
-        index
-    ) {
+    books.forEach(function (book, index) {
 
         if (!book.issued) {
 
             bookSelect.innerHTML += `
 
                 <option value="${index}">
-
                     ${escapeHTML(book.name)}
-                    -
-                    ${escapeHTML(book.author)}
-
                 </option>
 
             `;
@@ -984,38 +720,29 @@ function updateIssueSelectors() {
         }
 
     });
-
 }
 
 
-/* =========================================
-   ISSUE SELECTED BOOK
-========================================= */
+// ===============================
+// ISSUE SELECTED BOOK
+// ===============================
 
 function issueSelectedBook() {
 
-    const studentIndex =
-        document.getElementById(
-            "issueStudent"
-        ).value;
+    let studentIndex =
+        document.getElementById("issueStudent").value;
 
 
-    const bookIndex =
-        document.getElementById(
-            "issueBook"
-        ).value;
+    let bookIndex =
+        document.getElementById("issueBook").value;
 
 
-    const issueDate =
-        document.getElementById(
-            "issueDate"
-        ).value;
+    let issueDate =
+        document.getElementById("issueDate").value;
 
 
-    const dueDate =
-        document.getElementById(
-            "dueDate"
-        ).value;
+    let dueDate =
+        document.getElementById("dueDate").value;
 
 
     if (
@@ -1026,66 +753,55 @@ function issueSelectedBook() {
     ) {
 
         alert(
-            "Please fill all issue details."
+            "Please select student, book and dates."
         );
 
         return;
-
     }
 
 
-    if (
-        new Date(dueDate) <
-        new Date(issueDate)
-    ) {
+    if (dueDate < issueDate) {
 
         alert(
             "Due date cannot be before issue date."
         );
 
         return;
-
     }
 
 
-    const student =
+    let student =
         students[studentIndex];
 
 
-    const book =
+    let book =
         books[bookIndex];
-
-
-    if (!student || !book) {
-
-        alert(
-            "Invalid student or book."
-        );
-
-        return;
-
-    }
 
 
     if (book.issued) {
 
-        alert(
-            "This book is already issued."
-        );
+        alert("This book is already issued.");
 
         return;
-
     }
 
+
+    // Mark book issued
 
     book.issued = true;
 
 
+    // Create transaction record
+
     records.push({
+
+        studentIndex: Number(studentIndex),
 
         studentName: student.name,
 
         studentId: student.id,
+
+        bookIndex: Number(bookIndex),
 
         bookName: book.name,
 
@@ -1095,7 +811,7 @@ function issueSelectedBook() {
 
         returnDate: "",
 
-        returned: false
+        status: "Issued"
 
     });
 
@@ -1103,33 +819,39 @@ function issueSelectedBook() {
     saveAll();
 
 
+    alert("Book issued successfully!");
+
+
     displayBooks();
 
     displayRecords();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
+    updateIssueSelectors();
 
-    alert(
-        "Book issued successfully!"
-    );
 
+    // Reset form
+
+    document.getElementById("issueStudent").value = "";
+
+    document.getElementById("issueBook").value = "";
+
+    document.getElementById("issueDate").value =
+        getTodayDate();
+
+    document.getElementById("dueDate").value = "";
 }
 
 
-/* =========================================
-   DISPLAY RECORDS
-========================================= */
+// ===============================
+// RECORDS
+// ===============================
 
 function displayRecords() {
 
-    const recordList =
-        document.getElementById(
-            "recordList"
-        );
-
+    let recordList =
+        document.getElementById("recordList");
 
     if (!recordList) return;
 
@@ -1139,36 +861,21 @@ function displayRecords() {
 
     if (records.length === 0) {
 
-        recordList.innerHTML = `
-
-            <div class="record">
-
-                <h3>
-                    📋 No Records Yet
-                </h3>
-
-                <p>
-                    Issue a book to create a transaction record.
-                </p>
-
-            </div>
-
-        `;
+        recordList.innerHTML =
+            `<div class="empty">
+                No issue/return records found.
+            </div>`;
 
         return;
-
     }
 
 
-    records.forEach(function (
-        record,
-        index
-    ) {
+    records.forEach(function (record, index) {
 
-        const status =
-            record.returned
-                ? "Returned"
-                : "Issued";
+        let statusClass =
+            record.status === "Issued"
+                ? "issued"
+                : "available";
 
 
         recordList.innerHTML += `
@@ -1180,128 +887,94 @@ function displayRecords() {
                 </h3>
 
                 <p>
-                    <strong>Student:</strong>
-                    ${escapeHTML(record.studentName)}
+                    👨‍🎓 Student:
+                    <strong>
+                        ${escapeHTML(record.studentName)}
+                    </strong>
                 </p>
 
                 <p>
-                    <strong>Student ID:</strong>
+                    🆔 Student ID:
                     ${escapeHTML(record.studentId)}
                 </p>
 
                 <p>
-                    <strong>Issue Date:</strong>
+                    📅 Issue Date:
                     ${escapeHTML(record.issueDate)}
                 </p>
 
                 <p>
-                    <strong>Due Date:</strong>
+                    📅 Due Date:
                     ${escapeHTML(record.dueDate)}
                 </p>
 
+                ${
+                    record.returnDate
+                    ?
+                    `<p>
+                        ↩ Return Date:
+                        ${escapeHTML(record.returnDate)}
+                    </p>`
+                    :
+                    ""
+                }
+
                 <p>
-
-                    <strong>Status:</strong>
-
-                    <span class="${
-                        record.returned
-                            ? "available"
-                            : "issued"
-                    }">
-
-                        ${status}
-
-                    </span>
-
+                    Status:
+                    <strong class="${statusClass}">
+                        ${record.status}
+                    </strong>
                 </p>
 
                 ${
-                    record.returned
+                    record.status === "Issued"
 
-                    ? `
+                    ?
 
-                        <p>
+                    `<button onclick="returnRecord(${index})">
+                        ↩ Return Book
+                     </button>`
 
-                            <strong>
-                                Return Date:
-                            </strong>
+                    :
 
-                            ${escapeHTML(
-                                record.returnDate
-                            )}
-
-                        </p>
-
-                      `
-
-                    : `
-
-                        <button
-                            onclick="returnRecord(${index})"
-                        >
-
-                            ↩️ Return Book
-
-                        </button>
-
-                      `
+                    ""
                 }
 
             </div>
 
         `;
-
     });
-
 }
 
 
-/* =========================================
-   RETURN RECORD
-========================================= */
+// ===============================
+// RETURN FROM RECORD
+// ===============================
 
 function returnRecord(index) {
 
-    const record =
-        records[index];
+    let record = records[index];
 
 
-    if (
-        !record ||
-        record.returned
-    ) {
-
+    if (record.status === "Returned") {
         return;
-
     }
 
 
-    const today =
-        new Date()
-        .toISOString()
-        .split("T")[0];
+    record.status = "Returned";
+
+    record.returnDate =
+        getTodayDate();
 
 
-    record.returned = true;
+    // Find book
 
-    record.returnDate = today;
-
-
-    const book =
-        books.find(function (item) {
-
-            return (
-                item.name ===
-                record.bookName
-            );
-
-        });
+    let book =
+        books[record.bookIndex];
 
 
     if (book) {
-
         book.issued = false;
-
     }
 
 
@@ -1312,96 +985,90 @@ function returnRecord(index) {
 
     displayBooks();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
+    updateIssueSelectors();
 }
 
 
-/* =========================================
-   DASHBOARD
-========================================= */
+// ===============================
+// DASHBOARD
+// ===============================
 
 function updateDashboard() {
 
-    const total =
+    let totalBooks =
         books.length;
 
 
-    const issued =
+    let issuedBooks =
         books.filter(function (book) {
 
-            return book.issued === true;
+            return book.issued;
 
         }).length;
 
 
-    const available =
-        total - issued;
+    let availableBooks =
+        totalBooks - issuedBooks;
 
 
-    const totalBooks =
-        document.getElementById(
-            "totalBooks"
-        );
+    let totalStudents =
+        students.length;
 
 
-    const issuedBooks =
-        document.getElementById(
-            "issuedBooks"
-        );
+    let totalElement =
+        document.getElementById("totalBooks");
 
 
-    const availableBooks =
-        document.getElementById(
-            "availableBooks"
-        );
+    let issuedElement =
+        document.getElementById("issuedBooks");
 
 
-    const totalStudents =
-        document.getElementById(
-            "totalStudents"
-        );
+    let availableElement =
+        document.getElementById("availableBooks");
 
 
-    if (totalBooks) {
+    let studentsElement =
+        document.getElementById("totalStudents");
 
-        totalBooks.innerText =
-            total;
+
+    if (totalElement) {
+
+        totalElement.innerText =
+            totalBooks;
 
     }
 
 
-    if (issuedBooks) {
+    if (issuedElement) {
 
-        issuedBooks.innerText =
-            issued;
-
-    }
-
-
-    if (availableBooks) {
-
-        availableBooks.innerText =
-            available;
+        issuedElement.innerText =
+            issuedBooks;
 
     }
 
 
-    if (totalStudents) {
+    if (availableElement) {
 
-        totalStudents.innerText =
-            students.length;
+        availableElement.innerText =
+            availableBooks;
 
     }
 
+
+    if (studentsElement) {
+
+        studentsElement.innerText =
+            totalStudents;
+
+    }
 }
 
 
-/* =========================================
-   UPDATE EVERYTHING
-========================================= */
+// ===============================
+// UPDATE EVERYTHING
+// ===============================
 
 function updateAll() {
 
@@ -1411,76 +1078,102 @@ function updateAll() {
 
     displayRecords();
 
-    updateIssueSelectors();
-
     updateDashboard();
 
-    setDefaultDate();
-
+    updateIssueSelectors();
 }
 
 
-/* =========================================
-   DEFAULT ISSUE DATE
-========================================= */
+// ===============================
+// TODAY'S DATE
+// ===============================
 
-function setDefaultDate() {
+function getTodayDate() {
 
-    const issueDate =
-        document.getElementById(
-            "issueDate"
-        );
+    let today =
+        new Date();
 
 
-    if (
-        issueDate &&
-        issueDate.value === ""
-    ) {
-
-        const today =
-            new Date()
-            .toISOString()
-            .split("T")[0];
+    let year =
+        today.getFullYear();
 
 
-        issueDate.value =
-            today;
+    let month =
+        String(today.getMonth() + 1)
+        .padStart(2, "0");
 
-    }
 
+    let day =
+        String(today.getDate())
+        .padStart(2, "0");
+
+
+    return `${year}-${month}-${day}`;
 }
 
 
-/* =========================================
-   HTML SECURITY
-========================================= */
-
-function escapeHTML(text) {
-
-    const div =
-        document.createElement("div");
-
-
-    div.textContent =
-        text;
-
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================================
-   START
-========================================= */
+// ===============================
+// DEFAULT ISSUE DATE
+// ===============================
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        updateDashboard();
+        let issueDate =
+            document.getElementById("issueDate");
 
-        setDefaultDate();
+
+        if (issueDate) {
+
+            issueDate.value =
+                getTodayDate();
+
+        }
+
+
+        // Show dashboard by default
+
+        let sections =
+            document.querySelectorAll(".section");
+
+
+        sections.forEach(function (section) {
+
+            section.style.display = "none";
+
+        });
+
+
+        let dashboard =
+            document.getElementById("dashboard");
+
+
+        if (dashboard) {
+
+            dashboard.style.display = "block";
+
+        }
 
     }
 );
+
+
+// ===============================
+// SECURITY / HTML ESCAPE
+// ===============================
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+}
