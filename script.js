@@ -1307,7 +1307,10 @@ function displayRecentTransactions() {
                     Issue Date:
                     ${record.issueDate}
                 </p>
-
+                    <p>
+    Due Date:
+    ${record.dueDate}
+</p>
                 <p>
                     Status:
                     <strong class="record-status">
