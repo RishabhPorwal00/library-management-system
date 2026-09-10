@@ -1248,6 +1248,7 @@ function escapeHTML(text) {
 /* ================= START ================= */
 
 showSection("dashboard");
+
 function displayRecentTransactions() {
 
     let box = document.getElementById("recentTransactions");
