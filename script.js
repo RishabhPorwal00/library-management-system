@@ -444,15 +444,25 @@ function cancelEdit() {
 
 function deleteBook(index) {
 
-    if (
-        !confirm(
-            "Are you sure you want to delete this book?"
-        )
-    ) {
+    let bookName = books[index].name;
 
+    let confirmDelete = confirm(
+        "Are you sure you want to delete " + bookName + "?"
+    );
+
+    if (!confirmDelete) {
         return;
-
     }
+
+    books.splice(index, 1);
+
+    saveAll();
+
+    displayBooks();
+    updateDashboard();
+    updateIssueSelectors();
+
+}
 
 
     books.splice(index, 1);
