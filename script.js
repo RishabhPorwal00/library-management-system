@@ -227,7 +227,9 @@ function displayBooks() {
             book.issued
                 ? "Issued"
                 : "Available";
-
+let statusClass = book.issued
+    ? "status-issued"
+    : "status-available";
 
         let actionButton =
             book.issued
