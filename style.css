@@ -590,3 +590,85 @@ footer {
 #loginPage {
     min-height: 100vh;
 }
+/* =========================
+   MOBILE ALIGNMENT FIX
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-area {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .sidebar-menu button {
+        flex: 1 1 45%;
+        margin: 0;
+    }
+
+    main {
+        padding: 15px 10px;
+    }
+
+    .topbar {
+        padding: 15px 10px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        width: 100%;
+    }
+
+    .dashboard-box,
+    .form-box,
+    .list-box {
+        width: 100%;
+        padding: 15px;
+    }
+
+    input,
+    select {
+        width: 100%;
+        max-width: 100%;
+        margin: 6px 0;
+    }
+
+    button {
+        max-width: 100%;
+    }
+
+    .book,
+    .student,
+    .record {
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px 10px;
+    }
+}
