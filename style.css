@@ -10,665 +10,363 @@ body {
     color: #1f2937;
 }
 
-
-/* ================= LOGIN ================= */
-
-#loginPage {
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: linear-gradient(
-        135deg,
-        #1e3a8a,
-        #4f46e5
-    );
-
-    padding: 20px;
-}
-
-.login-box {
-    width: 100%;
-    max-width: 400px;
-
-    background: white;
-
-    padding: 35px;
-
-    border-radius: 18px;
-
-    text-align: center;
-
-    box-shadow: 0 20px 50px rgba(0,0,0,.2);
-}
-
-.login-icon {
-    font-size: 50px;
-}
-
-.login-box h1 {
-    margin: 10px 0;
-}
-
-.login-box p {
-    color: #6b7280;
-    margin-bottom: 20px;
-}
-
-.login-box input {
-    width: 100%;
-
-    padding: 13px;
-
-    margin: 8px 0;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-}
-
-.login-box button {
-    width: 100%;
-
-    padding: 13px;
-
-    margin-top: 10px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #2563eb;
-
-    color: white;
-
-    font-size: 16px;
-
-    cursor: pointer;
-}
-
-.login-box small {
-    display: block;
-
-    margin-top: 15px;
-
-    color: #6b7280;
-}
-
-
-/* ================= APP ================= */
-
-#app {
-    display: none;
-}
-
-.sidebar {
-    position: fixed;
-
-    left: 0;
-    top: 0;
-
-    width: 240px;
-
-    height: 100vh;
-
-    background: #172554;
-
-    color: white;
-
-    padding: 25px 15px;
-
-    display: flex;
-
-    flex-direction: column;
-}
-
-.logo {
-    font-size: 22px;
-
-    font-weight: bold;
-
-    text-align: center;
-
-    margin-bottom: 35px;
-}
-
-.sidebar-menu {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-}
-
-.sidebar-menu button,
-.logout {
-    border: none;
-
-    padding: 13px;
-
-    border-radius: 8px;
-
-    background: transparent;
-
-    color: white;
-
-    text-align: left;
-
-    font-size: 15px;
-
-    cursor: pointer;
-}
-
-.sidebar-menu button:hover,
-.sidebar-menu button.active {
-    background: #2563eb;
-}
-
-.logout {
-    margin-top: auto;
-
-    background: #dc2626;
-}
-
-.main-area {
-    margin-left: 240px;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-}
-
 .topbar {
-    background: white;
-
-    padding: 22px 30px;
-
-    border-bottom: 1px solid #e5e7eb;
+    background: linear-gradient(135deg, #243b55, #141e30);
+    color: white;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.topbar h2 {
+.topbar h1 {
+    font-size: 26px;
     margin-bottom: 5px;
 }
 
 .topbar p {
-    color: #6b7280;
+    opacity: .8;
 }
 
+.logout-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-/* ================= MAIN ================= */
-
-main {
-    width: 100%;
-
+.container {
+    width: 90%;
     max-width: 1200px;
-
-    margin: auto;
-
-    padding: 30px;
+    margin: 30px auto;
 }
 
-.section {
-    display: none;
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
 }
 
-#dashboard {
-    display: block;
-}
-
-
-/* ================= WELCOME ================= */
-
-.welcome-box {
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #6366f1
-    );
-
-    color: white;
-
-    padding: 30px;
-
-    border-radius: 15px;
-
-    margin-bottom: 25px;
-}
-
-.welcome-box h1 {
-    margin-bottom: 8px;
-}
-
-
-/* ================= DASHBOARD ================= */
-
-.dashboard {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 18px;
-
-    margin-bottom: 25px;
-}
-
-.card {
+.login-card {
     background: white;
-
-    padding: 25px;
-
-    border-radius: 14px;
-
-    text-align: center;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,.06);
-}
-
-.card h3 {
-    font-size: 15px;
-
-    color: #6b7280;
-}
-
-.card p {
-    font-size: 35px;
-
-    font-weight: bold;
-
-    margin-top: 12px;
-
-    color: #2563eb;
-}
-
-.dashboard-box,
-.form-box,
-.list-box {
-    background: white;
-
-    padding: 25px;
-
-    border-radius: 14px;
-
-    margin-bottom: 25px;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,.05);
-}
-
-.dashboard-box h2,
-.form-box h2,
-.list-box h2 {
-    margin-bottom: 18px;
-}
-
-.dashboard-box button {
-    padding: 11px 18px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #2563eb;
-
-    color: white;
-
-    cursor: pointer;
-
-    margin: 5px;
-}
-
-
-/* ================= FORMS ================= */
-
-.form-box input,
-.form-box select,
-.list-box > input,
-.edit-box input {
     width: 100%;
-
-    max-width: 450px;
-
-    padding: 12px;
-
-    margin: 7px 0;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 8px;
-
-    font-size: 15px;
+    max-width: 430px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.1);
+    text-align: center;
 }
 
-.form-box button,
-.edit-box button {
-    padding: 11px 18px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #2563eb;
-
-    color: white;
-
-    cursor: pointer;
-
-    margin: 5px 3px;
+.logo {
+    font-size: 50px;
+    margin-bottom: 10px;
 }
 
-.form-box label {
-    display: block;
-
-    margin-top: 10px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-
-/* ================= PAGE TITLE ================= */
-
-.page-title {
-    margin-bottom: 25px;
-}
-
-.page-title h1 {
+.login-card h2 {
     margin-bottom: 5px;
 }
 
-.page-title p {
+.muted {
     color: #6b7280;
+    margin-bottom: 20px;
 }
 
-
-/* ================= BOOK / STUDENT ================= */
-
-.book,
-.record {
-    background: #f8fafc;
-
-    padding: 18px;
-
-    border-radius: 10px;
-
-    margin-top: 15px;
-
-    border: 1px solid #e5e7eb;
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
 }
 
-.book h3,
-.record h3 {
-    margin-bottom: 8px;
-}
-
-.book p,
-.record p {
-    margin: 6px 0;
-
-    color: #4b5563;
-}
-
-.book button {
-    padding: 9px 13px;
-
-    margin: 8px 5px 0 0;
-
+.primary-btn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
     border: none;
-
-    border-radius: 7px;
-
-    background: #2563eb;
-
+    border-radius: 8px;
+    background: #243b55;
     color: white;
-
+    font-size: 15px;
     cursor: pointer;
 }
 
-.book button:last-child {
-    background: #dc2626;
+.primary-btn:hover {
+    background: #172a40;
 }
 
+.error {
+    color: #dc2626;
+    margin-top: 10px;
+}
 
-/* ================= STATUS ================= */
-
-.status-badge {
-    display: inline-block;
-
-    padding: 5px 12px;
-
-    border-radius: 20px;
-
+.demo-box {
+    background: #f3f4f6;
+    margin-top: 20px;
+    padding: 13px;
+    border-radius: 8px;
     font-size: 13px;
+}
 
-    font-weight: bold;
+.welcome {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
 
+.page-title {
+    margin-bottom: 20px;
+}
+
+.page-title p,
+.page-header p {
+    color: #6b7280;
     margin-top: 5px;
 }
 
-.status-available {
-    background: #dcfce7;
-
-    color: #166534;
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
 }
 
-.status-issued {
-    background: #fee2e2;
-
-    color: #991b1b;
-}
-
-
-/* ================= EDIT ================= */
-
-.edit-box {
-    display: none;
-
-    background: #eff6ff;
-
-    padding: 18px;
-
-    margin-top: 15px;
-
-    border-radius: 10px;
-}
-
-
-/* ================= EMPTY ================= */
-
-.empty {
-    text-align: center;
-
-    padding: 25px;
-
-    color: #6b7280;
-}
-
-
-/* ================= FOOTER ================= */
-
-footer {
-    margin-top: auto;
-
+.stat-card {
     background: white;
+    padding: 22px;
+    border-radius: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
 
-    border-top: 1px solid #e5e7eb;
+.stat-card span {
+    font-size: 32px;
+}
 
-    padding: 20px;
-
-    text-align: center;
-
+.stat-card p {
     color: #6b7280;
-
     font-size: 14px;
 }
 
+.stat-card h3 {
+    font-size: 28px;
+    margin-top: 5px;
+}
 
-/* ================= MOBILE ================= */
+.quick-actions,
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.action-grid button {
+    border: none;
+    padding: 18px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #243b55;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.action-grid button:hover {
+    background: #dbeafe;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    border: none;
+    background: #243b55;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.search {
+    margin: 20px 0;
+    background: white;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.book-card,
+.student-card,
+.issue-card {
+    background: white;
+    padding: 20px;
+    border-radius: 13px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.06);
+}
+
+.book-card h3,
+.student-card h3 {
+    margin-bottom: 10px;
+}
+
+.book-card p,
+.student-card p,
+.issue-card p {
+    color: #6b7280;
+    margin: 6px 0;
+}
+
+.card-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.delete-btn,
+.return-btn {
+    border: none;
+    padding: 9px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.return-btn {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.available {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.issued {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.returned {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th,
+td {
+    padding: 13px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background: #243b55;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+    margin-top: 30px;
+}
 
 @media (max-width: 900px) {
 
-    .sidebar {
-        width: 190px;
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .main-area {
-        margin-left: 190px;
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .dashboard {
-        grid-template-columns:
-            repeat(2, 1fr);
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
-
 @media (max-width: 600px) {
-
-    .sidebar {
-        position: relative;
-
-        width: 100%;
-
-        height: auto;
-
-        padding: 15px;
-    }
-
-    .sidebar-menu {
-        flex-direction: row;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-    }
-
-    .sidebar-menu button {
-        text-align: center;
-    }
-
-    .logout {
-        margin-top: 15px;
-
-        text-align: center;
-    }
-
-    .main-area {
-        margin-left: 0;
-    }
-
-    main {
-        padding: 15px;
-    }
-
-    .dashboard {
-        grid-template-columns: 1fr;
-    }
 
     .topbar {
         padding: 18px;
     }
 
-    .welcome-box {
-        padding: 22px;
+    .topbar h1 {
+        font-size: 19px;
     }
 
-}
-
-/* APP HIDDEN UNTIL LOGIN */
-#app {
-    display: none;
-}
-
-#loginPage {
-    min-height: 100vh;
-}
-/* =========================
-   MOBILE ALIGNMENT FIX
-========================= */
-
-@media (max-width: 600px) {
-
-    body {
-        overflow-x: hidden;
+    .container {
+        width: 94%;
     }
 
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    .main-area {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .sidebar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .sidebar-menu button {
-        flex: 1 1 45%;
-        margin: 0;
-    }
-
-    main {
-        padding: 15px 10px;
-    }
-
-    .topbar {
-        padding: 15px 10px;
-    }
-
-    .stats {
+    .stats,
+    .action-grid,
+    .book-grid,
+    .form-grid {
         grid-template-columns: 1fr;
     }
 
-    .stat-card {
-        width: 100%;
+    .page-header {
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column;
     }
 
-    .dashboard-box,
-    .form-box,
-    .list-box {
-        width: 100%;
-        padding: 15px;
-    }
-
-    input,
-    select {
-        width: 100%;
-        max-width: 100%;
-        margin: 6px 0;
-    }
-
-    button {
-        max-width: 100%;
-    }
-
-    .book,
-    .student,
-    .record {
-        width: 100%;
-        overflow-wrap: break-word;
-    }
-
-    .quick-actions {
-        grid-template-columns: 1fr;
-    }
-
-    footer {
-        text-align: center;
-        padding: 15px 10px;
+    .login-card {
+        padding: 25px 18px;
     }
 }
